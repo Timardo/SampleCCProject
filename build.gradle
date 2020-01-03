@@ -1,0 +1,33 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven { url = "https://files.minecraftforge.net/maven" }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
+    }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+
+version = "1.0"
+group = "noonecares" // DO NOT delete this or the forge gradle couldn't work
+archivesBaseName = "SampleAddon" // I am using forge gradle only for obfuscation of result jar
+
+sourceCompatibility = targetCompatibility = '1.8'
+compileJava {
+    sourceCompatibility = targetCompatibility = '1.8'
+}
+
+minecraft {
+    version = "1.12.2-14.23.5.2847"
+    runDir = "run"
+    // be sure to use same forge version and mappings for both ContentCreator version and the addons
+    mappings = "snapshot_20171003"
+}
+
+dependencies {
+    // don't forget to add ContentCreator as dependency!
+    provided files('libs/contentcreator-0.1.jar')
+    // you can add as many mods as you wish to interact with
+    provided files('libs/ArtemisLib-1.12.2-v1.0.6.jar')
+}

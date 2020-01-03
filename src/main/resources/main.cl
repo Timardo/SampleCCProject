@@ -1,0 +1,1 @@
+some.package_.MainClass
